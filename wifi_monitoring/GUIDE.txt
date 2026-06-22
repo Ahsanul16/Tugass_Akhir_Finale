@@ -1,0 +1,75 @@
+WIFI MONITORING - USER GUIDE
+
+OVERVIEW
+- Web monitoring Access Point / MikroTik via SNMP (v1/v2c).
+- Fitur: status Online/Offline, trafik in/out, jumlah user.
+- Realtime: halaman dashboard/detail melakukan update otomatis (default 5 detik).
+
+SETUP CEPAT (XAMPP)
+1. Import database:
+   - Jalankan db/schema.sql
+   - Jalankan db/indexes.sql
+   - (Opsional) Jalankan db/seed.sql
+2. Pastikan PHP SNMP extension aktif.
+3. Login:
+   - Lihat user default di db/seed.sql (atau buat user di tabel users).
+
+TAMBAH ACCESS POINT / MIKROTIK
+- Isi IP Address, Community, dan minimal satu OID:
+  - oid_status (contoh uptime): 1.3.6.1.2.1.1.3.0
+  - oid_traffic_in / oid_traffic_out
+  - oid_user (boleh kosong)
+
+OID USER (MIKROTIK) - CATATAN
+- Jika oid_user berakhir ".0" (scalar), aplikasi memakai snmpget untuk ambil angka.
+- Jika oid_user tidak berakhir ".0" (kolom tabel), aplikasi memakai snmpwalk lalu menghitung jumlah row.
+  Contoh use-case: mtxrHotspotActiveUserName / mtxrHotspotActiveUserIP.
+
+REALTIME (TANPA MEMBEBANI)
+- Dashboard dan detail AP melakukan request otomatis tiap 5 detik.
+- Server tetap aman karena ada throttle:
+  - SNMP_MIN_REFRESH_INTERVAL (detik): minimal jarak SNMP query sungguhan.
+  - MONITORING_MIN_LOG_INTERVAL (detik): minimal jarak insert row monitoring.
+  Lihat config/snmp.php.
+
+API ENDPOINTS (DIPAKAI)
+1. Refresh + insert monitoring (SNMP + DB)
+   - GET /api/refresh_ap_status.php?id_ap=ID[&force=1][&log=1]
+   - force=1: selalu SNMP query ulang (manual refresh).
+   - log=1: pastikan snapshot masuk tabel monitoring (untuk realtime UI).
+
+2. Dashboard chart (DB only)
+   - GET /api/get_dashboard_chart.php?id_ap=ID
+
+3. Detail AP chart (DB only, 20 data terakhir)
+   - GET /api/get_ap_chart.php?id_ap=ID
+
+4. Detail AP - tabel monitoring (DB only, HTML rows)
+   - GET /api/get_ap_monitoring_rows.php?id_ap=ID&limit=100[&mon_date=YYYY-MM-DD][&mon_status=Online|Offline]
+
+5. Detail AP - stats avg/max/min (DB only)
+   - GET /api/get_ap_stats.php?id_ap=ID
+
+FILE STRUCTURE (RINGKAS)
+config/
+  - database.php     : koneksi MySQL (mysqli)
+  - session.php      : session + settings
+  - snmp.php         : helper SNMP + status/traffic/user + throttle constants
+
+api/
+  - refresh_ap_status.php        : endpoint utama SNMP + insert monitoring
+  - get_dashboard_chart.php      : chart dashboard (DB only)
+  - get_ap_chart.php             : chart detail AP (DB only)
+  - get_ap_monitoring_rows.php   : rows tabel monitoring detail (DB only)
+  - get_ap_stats.php             : stats avg/max/min (DB only)
+  - (endpoint lama sudah dihapus permanen)
+
+helpers/
+  - access_point.php : fungsi CRUD AP + query monitoring (paged/count/stats/cleanup)
+  - user.php         : fungsi user
+
+admin/ dan superadmin/
+  - dashboard.php    : dashboard + chart realtime (AJAX)
+  - access_point.php : detail AP + chart/table/stats realtime (AJAX)
+  - manage_access_point.php : CRUD AP
+  - (superadmin) manage_admin.php : CRUD admin

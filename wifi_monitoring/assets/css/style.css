@@ -1,0 +1,713 @@
+/* ========================================
+   Custom Styling untuk Monitoring AP
+   ======================================== */
+
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* ========================================
+   Navbar
+   ======================================== */
+
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: white !important;
+}
+
+.navbar-brand i {
+    margin-right: 8px;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+
+.sidebar {
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+    border-right: 1px solid #e0e0e0;
+    min-height: calc(100vh - 60px);
+    padding: 0;
+}
+
+.sidebar .nav-link {
+    color: #666;
+    padding: 12px 15px;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    margin-bottom: 0;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #f0f0f0;
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.sidebar .nav-link.active {
+    background-color: #f0f0f0;
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    font-weight: 600;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar .position-sticky {
+    top: 0;
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+
+.main-content {
+    background-color: transparent;
+    min-height: calc(100vh - 60px);
+}
+
+/* ========================================
+   Cards
+   ======================================== */
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    padding: 20px;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* ========================================
+   Status Badge
+   ======================================== */
+
+.badge-online {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-offline {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-indicator.online {
+    background-color: #28a745;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
+}
+
+.status-indicator.offline {
+    background-color: #dc3545;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.5);
+}
+/* ...existing code yang sudah ada... */
+
+/* ============================================ */
+/* OID Status Badge Styling - TAMBAHKAN DI SINI */
+/* ============================================ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.badge.bg-success {
+    background-color: #198754 !important;
+    color: white;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+.badge i {
+    font-size: 0.9rem;
+}
+
+/* Badge hover effect */
+.badge:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn {
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* ========================================
+   Tables
+   ======================================== */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fafbfc;
+}
+
+.ap-realtime-cell {
+    min-width: 430px;
+}
+
+.ap-realtime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 12px;
+}
+
+.ap-realtime-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: #fff;
+}
+
+.ap-realtime-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.ap-realtime-title strong {
+    display: block;
+    font-size: 13px;
+    line-height: 1.25;
+}
+
+.ap-realtime-title small {
+    color: #6c757d;
+    font-size: 11px;
+}
+
+.ap-live-panel {
+    display: grid;
+    grid-template-columns: 430px 190px;
+    align-items: stretch;
+    gap: 16px;
+    width: 636px;
+    max-width: none;
+}
+
+.ap-live-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.ap-live-chart-wrap {
+    width: 430px;
+    min-width: 0;
+}
+
+.ap-live-info {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    min-width: 0;
+    padding-top: 2px;
+}
+
+.ap-live-metrics {
+    display: grid;
+    gap: 9px;
+}
+
+.ap-live-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ap-live-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #adb5bd;
+}
+
+.ap-live-status.online {
+    color: #198754;
+}
+
+.ap-live-status.online::before {
+    background: #198754;
+}
+
+.ap-live-status.offline {
+    color: #dc3545;
+}
+
+.ap-live-status.offline::before {
+    background: #dc3545;
+}
+
+.ap-live-users,
+.ap-live-time {
+    font-size: 11px;
+    color: #6c757d;
+    white-space: nowrap;
+}
+
+.ap-live-meta {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.ap-live-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+}
+
+.ap-mini-metric {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    grid-column: span 2;
+}
+
+.ap-live-stat {
+    display: grid;
+    gap: 4px;
+}
+
+.ap-live-stat-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.ap-live-stat-head span {
+    color: #6c757d;
+    font-weight: 700;
+}
+
+.ap-mini-bar {
+    display: block;
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e9ecef;
+}
+
+.ap-mini-bar.down {
+    background: rgba(102, 126, 234, 0.16);
+}
+
+.ap-mini-bar.up {
+    background: rgba(245, 128, 62, 0.16);
+}
+
+.ap-mini-fill {
+    display: block;
+    width: 0%;
+    min-width: 12px;
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.25s ease;
+}
+
+.ap-mini-fill.down {
+    background: #667eea;
+    box-shadow: 0 0 0 1px rgba(102, 126, 234, 0.12);
+}
+
+.ap-mini-fill.up {
+    background: #f5803e;
+    box-shadow: 0 0 0 1px rgba(245, 128, 62, 0.12);
+}
+
+.ap-mini-value {
+    color: #495057;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.ap-mini-chart {
+    height: 130px;
+    padding: 0;
+}
+
+.ap-mini-chart canvas {
+    width: 100% !important;
+    height: 130px !important;
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .ap-realtime-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ap-realtime-cell {
+        min-width: 360px;
+    }
+
+    .ap-live-panel {
+        grid-template-columns: 430px 190px;
+        gap: 16px;
+    }
+
+    .ap-live-info {
+        align-content: start;
+    }
+}
+
+/* ========================================
+   Forms
+   ======================================== */
+
+.form-control,
+.form-select {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   Alerts
+   ======================================== */
+
+.alert {
+    border: none;
+    border-radius: 5px;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-left-color: #28a745;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-left-color: #dc3545;
+    color: #721c24;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-left-color: #ffc107;
+    color: #856404;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-left-color: #17a2b8;
+    color: #0c5460;
+}
+
+/* ========================================
+   Dashboard Stats
+   ======================================== */
+
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card.online {
+    border-top-color: #28a745;
+}
+
+.stat-card.offline {
+    border-top-color: #dc3545;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-icon {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* ========================================
+   Charts
+   ======================================== */
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.chart-container canvas {
+    max-height: 400px;
+}
+
+/* ========================================
+   Modal
+   ======================================== */
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-top: 1px solid #e0e0e0;
+        background: white;
+    }
+
+    .sidebar .nav-item {
+        display: inline-block;
+        width: 25%;
+    }
+
+    .main-content {
+        margin-bottom: 60px;
+    }
+
+    .stat-card {
+        margin-bottom: 15px;
+    }
+
+    .chart-container {
+        height: 300px;
+    }
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-danger {
+    color: var(--danger-color) !important;
+}
+
+.bg-light-primary {
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+.opacity-5 {
+    opacity: 0.5;
+}
+
+.rounded-lg {
+    border-radius: 8px;
+}
+
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mb-lg {
+    margin-bottom: 30px;
+}
+
+/* ========================================
+   Role Badge Styling
+   ======================================== */
+
+.nav-link .badge {
+    padding: 0.35rem 0.65rem !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.nav-link .badge i {
+    font-size: 0.85rem;
+}
+
+/* ========================================
+
+.skeleton-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
